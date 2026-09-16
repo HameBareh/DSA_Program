@@ -1,0 +1,119 @@
+#include<stdio.h>
+#include<conio.h>
+#include<malloc.h>
+struct node{
+	int data;
+	struct node *next;
+	};
+       struct node *p, *q, *r;
+void create()
+{
+	int i,n;
+	printf("Enter the Number of Nodes to Create: ");
+	scanf("%d",&n);
+	r=(struct node *)malloc(sizeof(struct node));
+
+	printf("Enter the First node: ");
+	scanf("%d",&r->data);
+	r->next=NULL;
+	p=q=r;
+	for(i=0;i<n-1;i++)
+	{
+		r=(struct node *)malloc(sizeof(struct node));
+		printf("Enter the next data: ");
+		scanf("%d",&r->data);
+		r->next=NULL;
+		q->next=r;
+		q=r;
+	}
+}
+void display()
+{
+	printf("Traversing the Linklist:\n");
+	q=p;
+	while(q!=NULL)
+	{
+	  printf("%d",q->data);
+	  if(q->next!=NULL)
+	  {
+	   printf("->");
+	   }
+	   q=q->next;
+}
+}
+void insert_begin()
+{
+	r=(struct node *)malloc(sizeof(struct node));
+	printf("Enter the data to insert at the Beginning");
+	scanf("%d",&r->data);
+	r->next=p;
+	p=r;
+}
+void insert_middle()
+{
+	int pos, i;
+	printf("Enter the position to Insert: ");
+	scanf("%d",&pos);
+	r=(struct node *)malloc(sizeof(struct node));
+	printf("Enter the data to insert at %d position: ",pos);
+	scanf("%d",&r->data);
+	q=p;
+	for(i=1;i<pos;i++)
+	{
+	 q=q->next;
+	 }
+
+	r->next=q->next;
+	q->next=r;
+}
+void insert_end()
+{
+	q=p;
+	r=(struct node *)malloc(sizeof(struct node));
+	printf("Enter the data to insert at the End: ");
+	scanf("%d",&r->data);
+	r->next=NULL;
+	q=p;
+	while(q->next!=NULL)
+	{
+	 q=q->next;
+	 }
+	q->next=r;
+	q=r;
+}
+void main(){
+	int choice;
+	clrscr();
+	create();
+	do{
+	printf("\nMenu\n");
+	printf("1.Insert at Beginning\n");
+	printf("2.Insert in the Middle\n");
+	printf("3.Insert at the End\n");
+	printf("4.Display\n");
+	printf("5.Exit\n");
+
+	printf("Enter Your Choice: ");
+	scanf("%d",&choice);
+	switch(choice)
+		{
+			case 1:
+				insert_begin();
+				break;
+			case 2:
+				insert_middle();
+				break;
+			case 3:
+				insert_end();
+				break;
+			case 4:
+				display();
+				break;
+			case 5:
+				exit(0);
+			default:
+				printf("\nInvalid Choice");
+		}
+	}while(choice!=5);
+	getch();
+}
