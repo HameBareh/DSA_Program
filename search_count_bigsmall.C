@@ -24,8 +24,12 @@ void main(){
 	}
 void input(){
 	int n, i;
-	printf("Enter the number of node: ");
+	a:printf("Enter the number of node: ");
 	scanf("%d",&n);
+	if(n<=0){
+		printf("Invalid number of Nodes\n");
+		goto a;
+		}
 	r=(struct node *)malloc(sizeof(struct node));
 	printf("\nEnter the First node: ");
 	scanf("%ld",&r->data);
