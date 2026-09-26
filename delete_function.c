@@ -39,6 +39,10 @@ void create()
 
 void display()
 {
+     if(p==NULL){
+        printf("\nThe linklist is Empty\n");
+        return;
+    }
     printf("Traversing the Linklist:\n");
 
     q=p;
@@ -58,6 +62,10 @@ void display()
 
 void delete_begin()
 {
+     if(p==NULL){
+        printf("\nThe linklist is Empty\n");
+        return;
+    }
     q=p;
 
     p=p->next;
